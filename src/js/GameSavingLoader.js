@@ -1,8 +1,11 @@
+import read from './reader';
+import json from './parser';
+
 export default class GameSavingLoader {
-  load() {
+  load(str) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        read()
+        read(str)
           .then((response) => json(response))
           .then((response) => {
             resolve(JSON.parse(response));

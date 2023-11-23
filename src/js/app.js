@@ -1,11 +1,12 @@
-(async () => {
+import read from './reader';
+import json from './parser';
+
+export default async function loader(data) {
   try {
-    const arrayBuffer = await read();
+    const arrayBuffer = await read(data);
     const str = await json(arrayBuffer);
     return JSON.parse(str);
   } catch (error) {
-    console.log(error);
-  } finally {
-    console.log('finally');
+    return 'error';
   }
-})();
+}
